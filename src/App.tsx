@@ -37,7 +37,8 @@ const App: React.FC = () => {
   };
 
   // Function to apply coupon code
-  const applyCoupon = () => {
+  //TODO falta agregar en apply coupon el llamado del servicio de cupones por usuario con caché, esto se usó asi para probar el frontend.
+  const applyCoupon = () => { 
     if (couponCode === 'DESCUENTO10') {
       setDiscount(0.1);
       toast({
@@ -69,7 +70,7 @@ const App: React.FC = () => {
   const handleProceedToPayment = async () => {
     console.log("Proceeding to payment..."); // Agrega este log
     const totalAmount = getTotalWithDiscount();
-  
+  //TODO Se hardcodeo el consumo de compra con el id de usuario, lo recomendable es enviar un JWT y el back en su MDW tiene que verificar si es un jwt firmado por nosotros.
     try {
       const response = await axios.post('http://localhost:5000/api/buy/6716bdd9977852cebbf52fb6', {
         amount: totalAmount,
